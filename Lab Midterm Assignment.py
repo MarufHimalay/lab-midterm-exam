@@ -11,15 +11,15 @@ class Hall(Star_Cinema):
     show_list = []
 
     def __init__(self, rows, cols, hall_no):
-        self.rows = rows
-        self.cols = cols
-        self.hall_no = hall_no
+        self.__rows = rows
+        self.__cols = cols
+        self.__hall_no = hall_no
         Star_Cinema.hall_list.append(self)
 
     def entry_show(self, id, movie_name, time):
         show = (id, movie_name, time)
         self.show_list.append(show)
-        show = [[0 for i in range(self.cols)] for j in range(self.rows)]
+        show = [[0 for i in range(self.__cols)] for j in range(self.__rows)]
         self.seats[id] = show
 
     def book_seats(self, name, phone_number, id, seat_list):
@@ -81,9 +81,9 @@ class Hall(Star_Cinema):
 
                 for seat in self.seats:
                     if seat == id:
-                        for i in range(self.rows):
+                        for i in range(self.__rows):
                             k = 0
-                            for l in range(self.cols):
+                            for l in range(self.__cols):
                                 if(self.seats[seat][i][l] == 0):
                                     print(chr(j)+str(k)+" "*8, end="")
                                 else:
